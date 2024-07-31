@@ -5,8 +5,20 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  //get event
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  event(): string {
+    return this.appService.event();
   }
+  //get collection
+  @Get()
+  collection(): string {
+    return this.appService.collection();
+  }
+  //get meme
+  @Get()
+  meme(): string {
+    return this.appService.meme();
+  }
+  
 }

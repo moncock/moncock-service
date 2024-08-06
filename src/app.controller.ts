@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Moncock, CatDocument } from './schemas/moncock.schema';
+import { Collection, CollectionDocument } from './schemas/moncock.schema';
 
 
 @Controller()
@@ -9,13 +9,13 @@ export class AppController {
 
   //get event
   @Get("get-event")
-  event(): Promise<Moncock> {
+  event(): Promise<Collection> {
     return this.appService.event();
   }
   //get collection
   @Get("get-collection")
-  collection(): Promise<string[]> {
-    return this.appService.collection();
+  async getCollection() {
+    return await this.appService.collection()
   }
   //get meme
   @Get("get-meme")

@@ -1,22 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Moncock, CatDocument } from './schemas/moncock.schema';
+import { Collection, CollectionDocument } from './schemas/moncock.schema';
 
 
 @Injectable()
 export class AppService {
-  constructor(@InjectModel(Moncock.name) private moncockModel: Model<CatDocument>) {}
+  constructor(@InjectModel(Collection.name) private moncockModel: Model<CollectionDocument>) {}
 
   //event
-  async event(): Promise<Moncock> {
+  async event(): Promise<Collection> {
     const createdCat = new this.moncockModel({name : "ww",age: 20,breed : "11"});
     return createdCat.save();
-   
   }
    //collection
-  async collection(): Promise<string[]>{
-    return ['Get Collection1','Get Collection2','Get Collection3'];
+   async collection(): Promise<CollectionDocument[]> {
+    console.log("this.moncockModel.find().exec()",this.moncockModel.find().exec())
+    return await this.moncockModel.find().exec();
   }
   //meme
   async meme(): Promise<string[]> {

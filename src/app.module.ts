@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Moncock, CatSchema } from './schemas/moncock.schema';
+import { Collection, CollectionSchema } from './schemas/moncock.schema';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 
@@ -19,7 +19,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         useUnifiedTopology: true,
       }),
       inject: [ConfigService],
-    }),    MongooseModule.forFeature([{ name: Moncock.name, schema: CatSchema , collection: 'moncock'}])
+    }),    MongooseModule.forFeature([{ name: Collection.name, schema: CollectionSchema , collection : "collection"  }])
   ],
   controllers: [AppController],
   providers: [AppService],
